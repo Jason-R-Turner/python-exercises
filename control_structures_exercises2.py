@@ -38,14 +38,14 @@ else:
 hours_worked = [30, 50]
 hourly_wages = 20
 weekly_wages = [h * hourly_wages for h in hours_worked]
-print(weekly_wages)
+
 
 for h in hours_worked:
-    if h > 40:
-        weekly_wages = [h * hourly_wages *1.5 for h in hours_worked]
+    if h <= 40:
+        h = [h * hourly_wages] 
     else:
-        weekly_wages = [h * hourly_wages for h in hours_worked]
-print(weekly_wages)
+        h = [h * hourly_wages * 1.5]
+    print('Paycheck is $' + str(h))
 
 #2. Loop Basics
 #While
@@ -102,32 +102,57 @@ for n in range(1, 11):
 
 
 #b.ii.
-for n in range(1, 10):
-    print(f'{n * (10**(n-1))}')
+# for n in range(1, 10):
+#     print(f'{n * (10**(n-1))}')
+
+for n in list(range(1, 10)):
+    print(str(n)*n)
+
 
 #c. break and continue
 #c.i. Prompt the user for an odd number between 1 and 50. Use a loop and a break statement to continue prompting the user if they enter invalid input. (Hint: use the isdigit method on strings to determine 
 # this). Use a loop and the continue statement to output all the odd numbers between 1 and 50, except for the number the user entered.
-number = input("Enter an odd number between 1 and 50, ")
+odd = input("Please enter an odd number from 1 to 50, ")
 
-d = number.isdigit()
-print(d)
-while d == False:
-    input("Try again")
-
+for n in odd:
+    if odd.isdigit() == False:
+        odd = input('Please try again using numbers only, ')
+    elif odd.isdigit() == True:
+        break
+        
 for n in range(1, 51):
-    if n % 2 == 0:
+    odd = int(odd)
+    if n == odd:
+        print('Yikes! Skipping number ' + str(odd))
+    elif n % 2 == 0:
         continue
-    print(f'Here is an odd number: {n}')
+    else:
+        print(f'Here is an odd number: {n}')
 
 
 #d. The input function can be used to prompt for input and use that input in your python code. Prompt the user to enter a positive number and write a loop that counts from 0 to that number. 
 # (Hints: first make sure that the value the user entered is a valid number, also note that the input function returns a string, so you'll need to convert this to a numeric type.)
 
+pos = input("Enter an positive number: ")
+pos.isdigit()
+pos = int(pos)
+
+for x in range(pos):
+    x = x+1
+    if x > 0:
+        print(str(x)+' is positive')
 
 
 #e. Write a program that prompts the user for a positive integer. Next write a loop that prints out the numbers from the number the user entered down to 1.
+pos = input("Enter an positive number: ")
+pos.isdigit()
+pos = int(pos)
 
+for x in range(pos):
+    x = x+1
+    if x > 0:
+        x = pos - (x-1)
+        print(str(x)+' is positive')
 
 
 #3. Fizzbuzz
@@ -163,13 +188,21 @@ for n in range(1, 101):
 # Ask if the user wants to continue.
 # Assume that the user will enter valid data.
 # Only continue if the user agrees to.
-integer = int(input("Enter a integer. "))
+integer = int(input("Enter an integer. "))
 
 print("number |"+" squared |"+" cubed")
 for n in range(1, (integer+1)):
     print(str(n) + "      |"+ str(n**n)+ "       |"+ str(n**n**n))
 
-cont = input("Do you want to continue?")
+cont = input("Do you want to continue? Yes or No, ")
+
+if cont == 'Yes':
+    integer = int(input("Enter an integer, "))
+    print("number |"+" squared |"+" cubed")
+    for n in range(1, (integer+1)):
+        print(str(n) + "      |"+ str(n**n)+ "       |"+ str(n**n**n))
+else:
+    print('Thanks for playing')
 
 
 
@@ -186,11 +219,37 @@ B = list(range(80, 88))
 C = list(range(67, 80))
 D = list(range(60, 67))
 F = list(range(60))
+
 grade_ranges = [A, B, C, D, F]
 
-print(grade_ranges)
+if grade in grade_ranges[0]:
+    print('Grade is A')
+elif grade in grade_ranges[1]:
+    print('Grade is B')
+elif grade in grade_ranges[2]:
+    print('Grade is C')
+elif grade in grade_ranges[3]:
+    print('Grade is D')
+else:
+    print('Grade is F')
+    
+    
+cont = input("Would you like to continue? Yes or No, ")
+if cont == 'Yes':
+    grade = int(input("Enter grade from 0-100, "))
+    if grade in grade_ranges[0]:
+        print('Grade is A')
+    elif grade in grade_ranges[1]:
+        print('Grade is B')
+    elif grade in grade_ranges[2]:
+        print('Grade is C')
+    elif grade in grade_ranges[3]:
+        print('Grade is D')
+    else:
+        print('Grade is F')
 
-(input("Please continue, "))
+else:
+    print('Thanks for playing')
 
 # A : 100 - 88
 # B : 87 - 80
