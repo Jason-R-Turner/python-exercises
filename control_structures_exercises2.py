@@ -115,8 +115,8 @@ for n in list(range(1, 10)):
 odd = input("Please enter an odd number from 1 to 50, ")
 
 for n in odd:
-    if odd.isdigit() == False:
-        odd = input('Please try again using numbers only, ')
+    if odd.isdigit() == False or int(odd) > 50 or int(odd) % 2 == 0:
+        odd = input('Please try again using odd numbers only, ')
     elif odd.isdigit() == True:
         break
         

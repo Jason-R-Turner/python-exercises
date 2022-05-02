@@ -80,7 +80,7 @@ def handle_commas(comma_sep):
         return 'Must be a string'
     # any commas in original comma_sep value are replaced by a none value and sets comma_sep as this transformed value
     comma_sep = comma_sep.replace(',', '')
-    # checks to see if values in comme_sep are digits
+    # checks to see if values in comma_sep are digits
     if comma_sep.isdigit():
         # if they are digits it converts them to a float value
         return float(comma_sep)
